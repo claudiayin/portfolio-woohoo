@@ -12,7 +12,7 @@ body {
   background-repeat: no-repeat; /* Prevents the GIF from repeating */
   background-position: center; /* Centers the GIF */
   position: static; /* Required to ensure the GIF stays in place */
-  min-height: 100vh; /* Ensures the background spans the full viewport height */
+  min-height: 110vh; /* Ensures the background spans the full viewport height */
   margin: 0;
   padding: 0;
   background: #fff; 
