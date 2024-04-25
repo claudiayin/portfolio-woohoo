@@ -46,7 +46,7 @@ body {
 
 .marquee {
     position: absolute;
-    top: 50%;
+    top: 200%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 200vw;
