@@ -10,7 +10,7 @@ body {
   background-image: url("img/flowers.gif"); /* Replace with your GIF URL */
   background-size: cover; /* Ensures the GIF covers the entire area */
   background-repeat: no-repeat; /* Prevents the GIF from repeating */
-  background-position: center; /* Centers the GIF */
+  background-position: relative; /* Centers the GIF */
   position: static; /* Required to ensure the GIF stays in place */
   min-height: 110vh; /* Ensures the background spans the full viewport height */
   margin: 0;
