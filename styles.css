@@ -11,6 +11,8 @@ body {
   padding: 0;
   background: #fff;
   background-image: url(img/2963556b-ef1d-a90c-5281-fe2884fbf84c.gif);
+  background-position: center;
+  background-size: cover;
 }
 
 .loader {
