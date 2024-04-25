@@ -66,4 +66,17 @@
                 <p>Folio* 2024</p>
     </div>   
 </body>
+<script>
+    gsap.from(".clip-top, .clip-bottom", 2, {
+        delay: 1,
+        height: "50vh",
+        ease: "power4.inOut",
+    });   
+
+    gsap.to(".marquee", 3.5,{
+        delay: 0.75,
+        top: "50%",
+        ease: "power4.inOut",
+    });
+</script>
 </html>
