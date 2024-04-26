@@ -1,6 +1,6 @@
 window.onload = function () {
     const gallery = document.querySelector(".gallery");
-    const previewImage = document.querySelector(".preview-img img");
+    const previewImage = document.querySelector(".preview-image img");
   
     document.addEventListener("mousemove", function (event) {
       const x = event.clientX;
@@ -28,7 +28,7 @@ window.onload = function () {
       const item = document.createElement("div");
       item.className = "item";
       const img = document.createElement("img");
-      img.src = "./assets/img" + ((i % 15) + 1) + ".jpg";
+      img.src = "./assets/img" + ((i % 15) + 1) + ".png";
       item.appendChild(img);
       gallery.appendChild(item);
     }
@@ -58,7 +58,7 @@ window.onload = function () {
       });
   
       item.addEventListener("mouseout", function () {
-        previewImage.src = "./assets/img1.jpg";
+        previewImage.src = "./assets/img1.png";
         gsap.to(item, {
           x: 0,
           y: 0,

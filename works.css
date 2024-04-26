@@ -80,7 +80,7 @@ body {
     object-fit: cover;
   }
 
-  .preview-image   {
+  .preview-img   {
     position: fixed;
     top: 50%;
     left: 50%;
