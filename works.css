@@ -6,9 +6,7 @@
 
 html,
 body {
-  margin: 0;
   width: 100%;
-  padding: 0;
   height: 1000vh;
   background: #fff; 
 }
@@ -38,6 +36,11 @@ body {
   }
   
   .nav-items a {
+    text-decoration: none;
+    color: #000;
+  }
+
+  .logo-items a {
     text-decoration: none;
     color: #000;
   }

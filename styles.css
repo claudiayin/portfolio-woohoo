@@ -100,6 +100,11 @@ body {
   color: #000;
 }
 
+.logo-items a {
+  text-decoration: none;
+  color: #000;
+}
+
 .nav-items a:not(:last-child) {
   padding-right: 4em;
 }
