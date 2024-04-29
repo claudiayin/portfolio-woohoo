@@ -102,7 +102,6 @@ body {
 
 .nav-items a:hover {
   text-decoration: underline;
-  font-weight: bold;
 }
 .logo a {
   text-decoration: none;
@@ -111,7 +110,6 @@ body {
 
 .logo a:hover {
   text-decoration: underline;
-  font-weight: bold;
 }
 
 .nav-items a:not(:last-child) {
