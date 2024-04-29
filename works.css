@@ -52,3 +52,7 @@ background: #fff;
 .logo a:hover {
   text-decoration: underline;
 }
+
+.nav-items a:not(:last-child) {
+  padding-right: 4em;
+}
