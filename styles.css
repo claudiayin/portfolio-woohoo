@@ -100,9 +100,13 @@ body {
   color: #000;
 }
 
-.logo-items a {
+.logo a {
   text-decoration: none;
   color: #000;
+}
+
+.logo a:hover {
+  color: khaki;
 }
 
 .nav-items a:not(:last-child) {
