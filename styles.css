@@ -100,13 +100,18 @@ body {
   color: #000;
 }
 
+.nav-items a:hover {
+  text-decoration: underline;
+  font-weight: bold;
+}
 .logo a {
   text-decoration: none;
   color: #000;
 }
 
 .logo a:hover {
-  color: khaki;
+  text-decoration: underline;
+  font-weight: bold;
 }
 
 .nav-items a:not(:last-child) {
