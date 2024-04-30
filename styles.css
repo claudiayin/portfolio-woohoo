@@ -29,7 +29,7 @@ svg {
 
 path {
   fill: none;
-  stroke: 50;
+  stroke: 200;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
