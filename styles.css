@@ -28,8 +28,8 @@ svg {
 }
 
 path {
-  fill: none;
-  stroke: 200;
+  fill: currentColor;
+  stroke: 50;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
