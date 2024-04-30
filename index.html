@@ -19,17 +19,22 @@
     <svg><path d="" class="trail" style="stroke: rgb(255, 0, 0)"></path></svg>
     <svg><path d="" class="trail" style="stroke: rgb(255, 225, 0)"></path></svg>
     <svg><path d="" class="trail" style="stroke: rgb(255, 243, 176)"></path></svg>
-    <defs>
-      <!-- Define a linear gradient with specific color stops -->
-      <linearGradient id="myGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stop-color="darkblue" />
-        <stop offset="20%" stop-color="blue" />
-        <stop offset="40%" stop-color="darkred" />
-        <stop offset="60%" stop-color="red" />
-        <stop offset="80%" stop-color="yellow" />
-        <stop offset="100%" stop-color="lightyellow" />
-      </linearGradient>
-    </defs>
+    <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="myGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="darkblue" />
+          <stop offset="20%" stop-color="blue" />
+          <stop offset="40%" stop-color="darkred" />
+          <stop offset="60%" stop-color="red" />
+          <stop offset="80%" stop-color="yellow" />
+          <stop offset="100%" stop-color="lightyellow" />
+        </linearGradient>
+      </defs>
+      <path
+        fill="url(#myGradient)"
+        d="M10 10 C 20 30, 40 40, 60 10 S 90 30, 110 10"
+      />
+    </svg>
     <div class="loader">
       <div class="loader-clip clip-top">
         <div class="marquee">
