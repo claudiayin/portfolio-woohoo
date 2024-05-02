@@ -63,5 +63,5 @@ body {
   width: 250px; /* changed from 400px */
   height: 100%;
   object-fit: contain;
-  transform: scale(2);
+  transform: scale(1);
 }
