@@ -52,7 +52,7 @@ body {
   justify-content: center;
   align-items: center;
   flex: 0 1 20px;
-  height: 1122px; /*changed from 450px to fit a4 hopefully */
+  height: 400px; /*changed from 450px to fit a4 hopefully */
   margin: 0 5px;
   background: #000;
   overflow: hidden;
@@ -60,7 +60,7 @@ body {
 }
 
 .gallery-item img {
-  width: 100%; /* changed from 400px */
+  width: 250px; /* changed from 400px */
   height: 100%;
   object-fit: contain;
   transform: scale(2);
