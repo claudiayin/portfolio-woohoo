@@ -51,13 +51,13 @@ path {
 .clip-top {
   top: 0;
   clip-path: inset(0 0 0 0);
-  background: #fff; /* changed */
+  background: #2b2b2b; /* changed back */
 }
 
 .clip-bottom {
   bottom: 0;
   clip-path: inset(0 0 0 0);
-  background: #fff; /* changed */
+  background: #2b2b2b; /* changed back */
 }
 
 .clip-center {
@@ -74,7 +74,7 @@ path {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 200vw;
-  color: #000; /* changed */
+  color: #fff; /* changed back */
   mix-blend-mode: difference;
   font-size: 5.8vw;
 }
@@ -86,6 +86,7 @@ path {
   justify-content: space-between;
   align-items: center;
   font-family: "Moresby";
+  color: #000; /*added*/
 }
 
 .container {

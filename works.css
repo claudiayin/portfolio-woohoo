@@ -52,7 +52,7 @@ body {
   justify-content: center;
   align-items: center;
   flex: 0 1 20px;
-  height: 400px;
+  height: 1122px; /*changed from 450px to fit a4 hopefully */
   margin: 0 5px;
   background: #000;
   overflow: hidden;
