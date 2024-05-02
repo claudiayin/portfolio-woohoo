@@ -60,7 +60,7 @@ body {
 }
 
 .gallery-item img {
-  width: 400px;
+  width: 100%; /* changed from 400px */
   height: 100%;
   object-fit: contain;
   transform: scale(2);
