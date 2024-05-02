@@ -16,7 +16,6 @@ body {
   margin: 0;
   padding: 0;
   background: #000; /* changed */
-  color: #fff; /* added */
 }
 
 svg {
@@ -86,7 +85,6 @@ path {
   justify-content: space-between;
   align-items: center;
   font-family: "Moresby";
-  color: #000; /*added*/
 }
 
 .container {
