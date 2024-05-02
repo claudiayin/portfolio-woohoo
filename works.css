@@ -16,6 +16,56 @@ body {
   overflow: hidden;
 }
 
+/*below is inserted for nav and footer */
+
+.topbot {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 1;
+  font-family: 'Courier New', Courier, monospace;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  font-size: 14px;
+}
+
+.topbot .nav,
+.topbot .footer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  padding: 2em 4em;
+}
+
+.nav-items a {
+  text-decoration: none;
+  color: #000;
+}
+
+.nav-items a:hover {
+  text-decoration: underline;
+}
+
+.logo a {
+  text-decoration: none;
+  color: #000;
+}
+
+.logo a:hover {
+  text-decoration: underline;
+}
+
+.nav-items a:not(:last-child) {
+  padding-right: 4em;
+}
+
+/*above is inserted for nav and footer */
+
 .container {
   position: absolute;
   top: 50%;
