@@ -16,6 +16,7 @@ body {
   margin: 0;
   padding: 0;
   background: #000; /* changed */
+  color: #fff; /* added */
 }
 
 svg {
