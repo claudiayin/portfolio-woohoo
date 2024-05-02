@@ -17,12 +17,10 @@ body {
 }
 
 /*below is inserted for nav and footer */
-
+/*
 .topbot {
   position: absolute;
   top: 0;
-  width: 100%;
-  height: 100vh;
   overflow: hidden;
   z-index: 1;
   font-family: 'Courier New', Courier, monospace;
@@ -32,6 +30,7 @@ body {
   flex-direction: column;
   font-size: 14px;
 }
+*/
 
 .topbot .nav,
 .topbot .footer {
@@ -40,9 +39,21 @@ body {
   justify-content: space-between;
   text-align: center;
   padding: 2em 4em;
+  font-family: 'Courier New', Courier, monospace;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  font-size: 14px;
+}
 }
 
 .nav-items a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.footer-items a {
   text-decoration: none;
   color: #fff;
 }
