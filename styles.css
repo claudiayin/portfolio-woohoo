@@ -15,7 +15,7 @@ body {
   min-height: 100vh; /* Ensures the background spans the full viewport height */
   margin: 0;
   padding: 0;
-  background: #000; 
+  background: #000; /* changed */
 }
 
 svg {
@@ -50,13 +50,13 @@ path {
 .clip-top {
   top: 0;
   clip-path: inset(0 0 0 0);
-  background: #fff;
+  background: #fff; /* changed */
 }
 
 .clip-bottom {
   bottom: 0;
   clip-path: inset(0 0 0 0);
-  background: #fff;
+  background: #fff; /* changed */
 }
 
 .clip-center {
@@ -73,7 +73,7 @@ path {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 200vw;
-  color: #000;
+  color: #000; /* changed */
   mix-blend-mode: difference;
   font-size: 5.8vw;
 }
@@ -113,7 +113,7 @@ path {
 
 .nav-items a {
   text-decoration: none;
-  color: #000;
+  color: #fff; /* changed */
 }
 
 .nav-items a:hover {
@@ -121,7 +121,7 @@ path {
 }
 .logo a {
   text-decoration: none;
-  color: #fff;
+  color: #fff; /* changed */
 }
 
 .logo a:hover {
