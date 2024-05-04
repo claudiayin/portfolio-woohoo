@@ -24,6 +24,16 @@
       frameRate(15);               // Set frame rate
     }
 
+    await faceapi.nets.tinyFaceDetector.loadFromUri('/models'); // Load tiny face detector model
+    await faceapi.nets.faceLandmark68Net.loadFromUri('/models');
+
+    faceLandmarks = await faceapi.detectSingleFace(video.elt, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks();
+
+    if (faceLandmarks) {
+        const noseTip = faceLandmarks.landmarks.getNose()[3]; // Get nose tip landmark
+        fill(255, 0, 0); // Set fill color to red
+        ellipse(noseTip.x, noseTip.y, 20, 20); // Draw a red ball at the nose tip
+        
     // Draw the mirrored video feed and ASCII art
     function draw() {
       // Display the mirrored video feed
