@@ -10,37 +10,36 @@
   <script src="https://cdn.jsdelivr.net/npm/face-api.js/dist/face-api.min.js"></script>
 </head>
 <body>
-  <!-- Main script -->
-  <script>
-    let video;
-    let faceLandmarks = null;
-
-    async function setup() {
-      createCanvas(640, 480);
-      video = createCapture(VIDEO); // Capture webcam feed
-      video.size(width, height);   // Match canvas size
-      video.hide();                // Hide default video stream
-
-      // Load face-api.js models
-      await faceapi.nets.tinyFaceDetector.loadFromUri('/models'); // Load tiny face detector model
-      await faceapi.nets.faceLandmark68Net.loadFromUri('/models'); // Load 68-point facial landmarks model
-      
-      frameRate(15); // Set frame rate
-    }
-
-    async function draw() {
-      background(200); // Set background color
-      image(video, 0, 0, width, height); // Display webcam feed
-
-      // Detect face landmarks asynchronously
-      faceLandmarks = await faceapi.detectSingleFace(video.elt, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks();
-
-      if (faceLandmarks) {
-        const noseTip = faceLandmarks.landmarks.getNose()[3]; // Get nose tip landmark
-        fill(255, 0, 0); // Set fill color to red
-        ellipse(noseTip.x, noseTip.y, 20, 20); // Draw a red ball at the nose tip
-      }
-    }
-  </script>
-</body>
-</html>
+    <script>
+        let video;
+        let faceLandmarks = null;
+    
+        async function setup() {
+          createCanvas(640, 480);
+          video = createCapture(VIDEO); // Capture webcam feed
+          video.size(width, height);   // Match canvas size
+          video.hide();                // Hide default video stream
+    
+          // Load face-api.js models
+          await faceapi.nets.tinyFaceDetector.loadFromUri('/models'); // Load tiny face detector model
+          await faceapi.nets.faceLandmark68Net.loadFromUri('/models'); // Load 68-point facial landmarks model
+          
+          frameRate(15); // Set frame rate
+        }
+    
+        async function draw() {
+          background(200); // Set background color
+          image(video, 0, 0, width, height); // Display webcam feed
+    
+          // Detect face landmarks asynchronously
+          faceLandmarks = await faceapi.detectSingleFace(video.elt, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks();
+    
+          if (faceLandmarks) {
+            const noseTip = faceLandmarks.landmarks.getNose()[3]; // Get nose tip landmark
+            fill(255, 0, 0); // Set fill color to red
+            ellipse(noseTip.x, noseTip.y, 20, 20); // Draw a red ball at the nose tip
+          }
+        }
+      </script>
+    </body>
+    </html>
