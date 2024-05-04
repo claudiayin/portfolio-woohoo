@@ -1,14 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Other</title>
-    <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cool Shit</title>
+  <link rel="stylesheet" href="other.css" />
     <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
 </head>
 <body>
-    
+  <script>
+    let video;
+    let useColor = false;
+
+
+    function setup() {
+      createCanvas(640, 480);
+      video = createCapture(VIDEO);
+      video.size(width, height);
+      video.hide();
+      frameRate(15); // Adjust the frame rate as needed
+    }
+
+
+    function draw() {
+      // Display the mirrored video feed
+      translate(width, 0);
+      scale(-1, 1);
+      image(video, 0, 0, width, height);
+
+
+      // Apply whitening filter
+      fill(255, 90); // Adjust transparency as needed
+      rect(0, 0, width, height);
+
+
+      // Draw ASCII art on top
+      if (useColor) {
+        drawColorAscii();
+      } else {
+        drawAscii();
+      }
+    }
+
+
+    function keyPressed() {
+      if (key === 'c' || key === 'C') {
+        useColor = !useColor;
+      }
+    }
+
+
+    function drawAscii() {
+      video.loadPixels();
+      let stepSize = 8; // Adjust this value for ASCII art resolution
+      for (let y = 0; y < video.height; y += stepSize) {
+        for (let x = 0; x < video.width; x += stepSize) {
+          let index = (x + y * video.width) * 4;
+          let r = video.pixels[index + 0];
+          let g = video.pixels[index + 1];
+          let b = video.pixels[index + 2];
+          let brightness = (r + g + b) / 3;
+          let character = getAsciiChar(brightness * 1.3); // Adjusted brightness scaling
+          textSize(stepSize);
+          fill(255); // Set fill color to white
+          text(character, x, y + stepSize); // Adjusted y position for better visual alignment
+        }
+      }
+    }
+
+
+    function drawColorAscii() {
+      video.loadPixels();
+      let stepSize = 8; // Adjust this value for ASCII art resolution
+      for (let y = 0; y < video.height; y += stepSize) {
+        for (let x = 0; x < video.width; x += stepSize) {
+          let index = (x + y * video.width) * 4;
+          let r = video.pixels[index + 0];
+          let g = video.pixels[index + 1];
+          let b = video.pixels[index + 2];
+          let brightness = (r + g + b) / 3;
+          let character = getAsciiChar(brightness * 1.2); // Adjusted brightness scaling
+          textSize(stepSize);
+          fill(255); // Set fill color to white
+          text(character, x, y + stepSize); // Adjusted y position for better visual alignment
+        }
+      }
+    }
+
+
+    // Function to get ASCII character based on brightness
+    function getAsciiChar(brightness) {
+      // ASCII characters ordered by increasing density
+      let asciiChars = [' ', '.', ':', '-', '=', '+', '*', '#', '%', '@'];
+      // Map brightness to ASCII characters
+      let index = Math.floor((brightness / 255) * asciiChars.length);
+      return asciiChars[index];
+    }
+  </script>
 </body>
 </html>
