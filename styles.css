@@ -50,7 +50,7 @@ path {
 .clip-top {
   top: 0;
   clip-path: inset(0 0 0 0);
-  background: #000; /* changed back */
+  background: #fff; /* changed */
 }
 
 .clip-bottom {
