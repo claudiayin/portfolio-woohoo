@@ -3,107 +3,43 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cool Shit</title>
+  <title>p5.js Video Capture with Facial Recognition</title>
   <!-- Include p5.js from a CDN -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
+  <!-- Include face-api.js for facial recognition -->
   <script src="https://cdn.jsdelivr.net/npm/face-api.js/dist/face-api.min.js"></script>
 </head>
 <body>
-  <!-- Place the p5.js code here -->
+  <!-- Main script -->
   <script>
-    // Initialize variables
     let video;
-    let useColor = false;
+    let faceLandmarks = null;
 
-    // Set up the canvas and video capture
-    function setup() {
+    async function setup() {
       createCanvas(640, 480);
-      video = createCapture(VIDEO); // Start capturing video from webcam
-      video.size(width, height);   // Set the video size to match the canvas
-      video.hide();                // Hide the default video feed
-      frameRate(15);               // Set frame rate
+      video = createCapture(VIDEO); // Capture webcam feed
+      video.size(width, height);   // Match canvas size
+      video.hide();                // Hide default video stream
+
+      // Load face-api.js models
+      await faceapi.nets.tinyFaceDetector.loadFromUri('/models'); // Load tiny face detector model
+      await faceapi.nets.faceLandmark68Net.loadFromUri('/models'); // Load 68-point facial landmarks model
+      
+      frameRate(15); // Set frame rate
     }
 
-    await faceapi.nets.tinyFaceDetector.loadFromUri('/models'); // Load tiny face detector model
-    await faceapi.nets.faceLandmark68Net.loadFromUri('/models');
+    async function draw() {
+      background(200); // Set background color
+      image(video, 0, 0, width, height); // Display webcam feed
 
-    faceLandmarks = await faceapi.detectSingleFace(video.elt, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks();
+      // Detect face landmarks asynchronously
+      faceLandmarks = await faceapi.detectSingleFace(video.elt, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks();
 
-    if (faceLandmarks) {
+      if (faceLandmarks) {
         const noseTip = faceLandmarks.landmarks.getNose()[3]; // Get nose tip landmark
         fill(255, 0, 0); // Set fill color to red
         ellipse(noseTip.x, noseTip.y, 20, 20); // Draw a red ball at the nose tip
-    }
-
-    // Draw the mirrored video feed and ASCII art
-    function draw() {
-      // Display the mirrored video feed
-      translate(width, 0);
-      scale(-1, 1); // Mirroring effect
-      image(video, 0, 0, width, height);
-
-      // Apply a whitening filter
-      fill(255, 90); // White with transparency
-      rect(0, 0, width, height); // Overlay the transparent white rectangle
-
-      // Draw ASCII art based on the selected mode
-      if (useColor) {
-        drawColorAscii();
-      } else {
-        drawAscii();
       }
-    }
-
-    // Toggle between color and monochrome ASCII art
-    function keyPressed() {
-      if (key === 'c' || key === 'C') {
-        useColor = !useColor; // Toggle the flag
-      }
-    }
-
-    // Draw monochrome ASCII art based on video pixels
-    function drawAscii() {
-      video.loadPixels();
-      let stepSize = 8; // Step size for ASCII art
-      for (let y = 0; y < video.height; y += stepSize) {
-        for (let x = 0; x < video.width; x += stepSize) {
-          let index = (x + y * video.width) * 4; // Pixel index
-          let r = video.pixels[index + 0];
-          let g = video.pixels[index + 1];
-          let b = video.pixels[index + 2];
-          let brightness = (r + g + b) / 3; // Average brightness
-          let character = getAsciiChar(brightness * 1.3); // Get ASCII character based on brightness
-          textSize(stepSize); // Set text size
-          fill(255); // White text
-          text(character, x, y + stepSize); // Draw character
-        }
-      }
-    }
-
-    // Draw color-based ASCII art
-    function drawColorAscii() {
-      video.loadPixels();
-      let stepSize = 8; // Step size for ASCII art
-      for (let y = 0; y < video.height; y += stepSize) {
-        for (let x = 0; x < video.width; x += stepSize) {
-          let index = (x + y * video.width) * 4; // Pixel index
-          let r = video.pixels[index + 0];
-          let g = video.pixels[index + 1];
-          let b = video.pixels[index + 2];
-          let brightness = (r + g + b) / 3; // Average brightness
-          let character = getAsciiChar(brightness * 1.2); // ASCII character based on brightness
-          textSize(stepSize); // Set text size
-          fill(255); // White text
-          text(character, x, y + stepSize); // Draw character
-        }
-      }
-    }
-
-    // Map brightness to ASCII characters
-    function getAsciiChar(brightness) {
-      let asciiChars = [' ', '.', ':', '-', '=', '+', '*', '#', '%', '@']; // ASCII characters ordered by density
-      let index = Math.floor((brightness / 255) * asciiChars.length); // Determine index
-      return asciiChars[index]; // Return ASCII character
     }
   </script>
 </body>
