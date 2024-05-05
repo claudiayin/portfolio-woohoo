@@ -14,97 +14,104 @@
 
   <!-- Main p5.js Script -->
   <script>
-    let song;
-    let playing;
-    let fr;
-    let a;
-    let b;
-    let layer;
-    let fft;
 
-    function preload() {
-      song = loadSound("music/peggy.mp3"); // Make sure the audio file is in the correct location
-      playing = false;
-      song.onended(() => {
-        playing = false;
-        document.getElementById("audio").innerText = "Play";
-        a = 0;
-      });
-      fr = 60;
+    let threshold = 100; // Set a threshold for loudness (tweak as needed)
+
+function preload() {
+  song = loadSound("away.mp3");
+  playing = false;
+  song.onended(() => {
+    playing = false;
+    document.getElementById("audio").innerText = "Play";
+    a = 0;
+  });
+  fr = 60;
+}
+
+function setup() {
+  createCanvas(500, 500);
+  layer = createGraphics(width, height);
+
+  background("black");
+
+  fft = new p5.FFT(0, 256);
+
+  a = 360 / (song.duration() * fr);
+  b = a;
+
+  frameRate(fr);
+}
+
+function draw() {
+  background(0);
+
+  layer.noFill();
+  layer.colorMode(RGB);
+
+  var spectrumA = fft.analyze();
+  var spectrumB = spectrumA.reverse(); // Reverse the spectrum
+  spectrumB.splice(0, 40); // Remove unwanted low frequencies
+
+  push();
+  translate(250, 250);
+  noFill();
+  stroke("white");
+
+  beginShape();
+
+  // Draw only for loud beats
+  for (let i = 0; i < spectrumB.length; i++) {
+    if (spectrumB[i] > threshold) { // Check if the amplitude is above the threshold
+      var amp = spectrumB[i];
+      var x = map(amp, 0, 256, -2, 2);
+      var y = map(i, 0, spectrumB.length, 30, 215);
+
+      vertex(x, y); // Draw the shape based on louder beats
     }
+  }
 
-    function setup() {
-      createCanvas(500, 500);
-      layer = createGraphics(width, height);
-      background('black');
+  endShape();
 
-      fft = new p5.FFT(0, 256);
+  pop();
 
-      a = 360 / (song.duration() * fr);
-      b = a;
+  push();
 
-      frameRate(fr);
+  translate(width / 2, height / 2);
+  rotate(radians(a));
+
+  layer.push();
+  layer.translate(width / 2, height / 2);
+  layer.rotate(radians(-a));
+
+  // Draw only for loud beats
+  for (let i = 0; i < spectrumB.length; i++) {
+    if (spectrumB[i] > threshold) { // Check if the amplitude is above the threshold
+      layer.strokeWeight(0.018 * spectrumB[i]);
+      layer.stroke(255, 183, 294 - spectrumB[i], spectrumB[i] / 40);
+      layer.line(0, i, 0, i);
     }
+  }
 
-    function draw() {
-      background(0);
+  layer.pop();
 
-      layer.noFill();
-      layer.colorMode(RGB);
+  image(layer, -width / 2, -height / 2); // Display the final result
 
-      let spectrumA = fft.analyze();
-      let spectrumB = spectrumA.reverse();
-      spectrumB.splice(0, 40);
+  pop();
 
-      // Visualization logic
-      push();
-      translate(250, 250);
-      noFill();
-      stroke('white');
+  if (playing) a += b; // Rotate if playing
+}
 
-      beginShape();
-      for (let i = 0; i < spectrumB.length; i++) {
-        let amp = spectrumB[i];
-        let x = map(amp, 0, 256, -2, 2);
-        let y = map(i, 0, spectrumB.length, 30, 215);
-        vertex(x, y);
-      }
-      endShape();
-      pop();
+function toggleAudio() {
+  if (!playing) {
+    song.play();
+    document.getElementById("audio").innerText = "Pause";
+  } else {
+    song.pause();
+    document.getElementById("audio").innerText = "Play";
+  }
 
-      // Layer manipulation and rotation
-      push();
-      translate(width / 2, height / 2);
-      rotate(radians(a));
-
-      layer.push();
-      layer.translate(width / 2, height / 2);
-      layer.rotate(radians(-a));
-
-      for (let i = 0; i < spectrumB.length; i++) {
-        layer.strokeWeight(0.018 * spectrumB[i]);
-        layer.stroke(255, 183, 294 - spectrumB[i], spectrumB[i] / 40); // Modified color
-        layer.line(0, i, 0, i);
-      }
-
-      layer.pop();
-      image(layer, -width / 2, -height / 2);
-      pop();
-
-      if (playing) a += b; // Rotate if playing
-    }
-
-    function toggleAudio() {
-      if (!playing) {
-        song.play();
-        document.getElementById("audio").innerText = "Pause";
-      } else {
-        song.pause();
-        document.getElementById("audio").innerText = "Play";
-      }
-
-      playing = !playing;
-    }
+  playing = !playing;
+}
     </script>
     </body>
     </html>
