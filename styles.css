@@ -94,13 +94,13 @@ body {
   font-weight: bold;
 }
 
-.container .nav,
-.container .footer {
+.container .nav {
   width: 100%;
   display: flex;
   justify-content: space-between;
   text-align: center;
   padding: 2em 4em;
+  z-index: 3;
 }
 
 .nav-items a {
