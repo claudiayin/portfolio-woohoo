@@ -1,14 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About</title>
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drag the Circle</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
 </head>
 <body>
-    
+  <script>
+    let circle; 
+    let isDragging = false; 
+    let textOnCircle = "plz dont drag me >.<"; 
+    function setup() {
+      createCanvas(windowWidth, windowHeight); 
+      let radius = 200; 
+      let centerX = width / 2; 
+      let centerY = height / 2; 
+
+      circle = {
+        x: centerX,
+        y: centerY,
+        radius: radius,
+        color: 'red'
+      };
+    }
+
+    function draw() {
+      background(255); // white, 0 = black
+
+      fill(0); 
+      textSize(32);
+      textAlign(CENTER, CENTER);
+      text("20230052@MYWHITECLIFFE.COM", width / 2, height / 2); 
+
+      fill(circle.color);
+      noStroke();
+      ellipse(circle.x, circle.y, circle.radius * 3, circle.radius * 3); 
+
+      fill(255); 
+      textSize(24);
+      textAlign(CENTER, CENTER);
+      text(textOnCircle, circle.x, circle.y); 
+    }
+
+    function mousePressed() {
+     
+      let d = dist(mouseX, mouseY, circle.x, circle.y);
+      if (d < circle.radius) {
+        isDragging = true; 
+      }
+    }
+
+    function mouseReleased() {
+      isDragging = false; 
+    }
+
+    function mouseDragged() {
+      if (isDragging) {
+        circle.x = mouseX;
+        circle.y = mouseY;
+      }
+    }
+  </script>
 </body>
 </html>
