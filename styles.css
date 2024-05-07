@@ -94,12 +94,12 @@ path {
   height: 100vh;
   overflow: hidden;
   z-index: 1;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'Arial', Arial, Helvetica, sans-serif;
   text-transform: uppercase;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  font-size: 14px;
+  font-size: 18px; /*changed from 16px */
 }
 
 .container .nav,
