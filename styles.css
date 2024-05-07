@@ -10,7 +10,7 @@ body {
   background-image: url("img/man.gif"); /* I DONT THINK THIS IS DOING ANYTHING */
   background-size: cover; 
   background-repeat: no-repeat; 
-  background-position: center; 
+  background-position: bottom 0px; 
   position: relative; 
   min-height: 100vh; 
   margin: 0;
