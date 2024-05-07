@@ -66,16 +66,6 @@ function resetCircle() {
       textAlign(CENTER, CENTER);
       text("20230052@MYWHITECLIFFE.COM", width / 2, height / 2); 
 
-      fill(circle.color);
-      noStroke();
-      ellipse(circle.x, circle.y, circle.radius * 4, circle.radius * 4); 
-
-      fill(255); 
-      textSize(24);
-      textAlign(CENTER, CENTER);
-      text(textOnCircle, circle.x, circle.y); 
-    
-
     function mousePressed() {
      
       let d = dist(mouseX, mouseY, circle.x, circle.y);
