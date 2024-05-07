@@ -19,8 +19,8 @@ body {
 }
 
 .gif {
-  position: relative;
-  bottom: 10px;
+  position: absolute;
+  bottom: 20px;
 }
 svg {
   position: absolute;
