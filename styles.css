@@ -21,7 +21,7 @@ body {
 .gif {
   position: relative;
   bottom: 10px;
-  z-index: 2;
+  z-index: 1;
   left: 20px;
 }
 
