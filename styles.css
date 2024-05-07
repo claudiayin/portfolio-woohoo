@@ -7,12 +7,12 @@
 
 html,
 body {
-  background-image: url("img/flowers.gif"); /* Replace with your GIF URL */
-  background-size: cover; /* Ensures the GIF covers the entire area */
-  background-repeat: no-repeat; /* Prevents the GIF from repeating */
-  background-position: center; /* Centers the GIF */
-  position: relative; /* Required to ensure the GIF stays in place */
-  min-height: 100vh; /* Ensures the background spans the full viewport height */
+  background-image: url("img/man.gif"); /* I DONT THINK THIS IS DOING ANYTHING */
+  background-size: cover; 
+  background-repeat: no-repeat; 
+  background-position: center; 
+  position: relative; 
+  min-height: 100vh; 
   margin: 0;
   padding: 0;
   background: #111111; /* changed */

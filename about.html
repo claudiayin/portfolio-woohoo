@@ -37,7 +37,30 @@
 
     function draw() {
       background(255); // white, 0 = black
+    
+    let circle; // Object representing the red circle
+    let isDragging = false; // State to check if circle is being dragged
+    let returnTime = 1.2; // Time in seconds before the circle returns to the center
+    let timer = null; // Timer to track the countdown
 
+    if (timer) {
+    fill(0); // Black text
+    textSize(24);
+    textAlign(CENTER, TOP);
+    text("Returning in: " + (returnTime - int(millis() - timer) / 1000).toFixed(1), width / 2, height - 50); // Display countdown
+  }
+
+  // Check if the timer has expired and reset the circle to the center
+  if (timer && millis() - timer >= returnTime * 1000) {
+    resetCircle(); // Reset circle to the center
+  }
+}
+function resetCircle() {
+  // Reset the circle's position to the center
+  circle.x = width / 2;
+  circle.y = height / 2;
+  timer = null; // Reset the timer
+}
       fill(0); 
       textSize(32);
       textAlign(CENTER, CENTER);
