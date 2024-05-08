@@ -30,7 +30,7 @@ body {
   height: auto; /* Maintain aspect ratio */
   position: relative; /* No absolute positioning */
   z-index: 1; /* Adjust as needed */
-  left: 160px;
+  left: 150px;
   bottom: 10px;
 }
 
