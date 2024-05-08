@@ -19,6 +19,8 @@ body {
 }
 
 .gif {
+  width: 100%;
+  height: auto;
   position: relative;
   bottom: 10px;
   z-index: 1;
