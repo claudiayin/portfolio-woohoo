@@ -99,7 +99,8 @@ body {
 .footer-items a {
   text-decoration: none;
   color: #fff;
-  font-size: medium;
+  font-size: small;
+  font-style: normal;
 }
 
 .footer {
