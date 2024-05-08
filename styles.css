@@ -26,11 +26,12 @@ body {
 }
 
 .gif {
-  width: 100%; /* Responsive width */
+  width: 75%; /* Responsive width */
   height: auto; /* Maintain aspect ratio */
   position: relative; /* No absolute positioning */
   z-index: 1; /* Adjust as needed */
-  left: 180px;
+  left: 160px;
+  bottom: 10px;
 }
 
 
