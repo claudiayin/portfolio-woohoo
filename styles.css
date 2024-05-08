@@ -22,7 +22,7 @@ body {
   position: relative;
   bottom: 10px;
   z-index: 1;
-  left: 40px;
+  left: 40px; /*20 px*/
 }
 
 .loader {
