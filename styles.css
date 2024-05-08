@@ -18,31 +18,14 @@ body {
   background: #111111; /* changed */
 }
 
-.gif-container {
-  display: block;
-  position: relative;
-  width: 100%; /* Parent container is responsive */
-  padding: 10px; /* To avoid alignment issues */
-}
-
 .gif {
-  width: 75%; /* Responsive width */
-  height: auto; /* Maintain aspect ratio */
-  position: relative; /* No absolute positioning */
-  z-index: 1; /* Adjust as needed */
-  left: 150px;
-  bottom: 10px;
-}
-
-
-/*.gif {
   width: 100%;
   height: auto;
-  position: absolute; /*relative 
+  position: relative; 
   bottom: 10px;
   z-index: 1;
-  left:
-} */
+  left: 160px
+} 
 
 
 .loader {
