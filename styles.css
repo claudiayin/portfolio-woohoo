@@ -18,14 +18,14 @@ body {
   background: #111111; /* changed */
 }
 
-.gif {
+/*.gif {
   width: 100%;
   height: auto;
   position: relative; 
   bottom: 10px;
   z-index: 1;
   left: 160px
-} 
+}*/ 
 
 
 .loader {
