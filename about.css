@@ -15,3 +15,37 @@
     font-weight: bold;
   } */
   
+  .container .nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    padding: 2em 4em;
+    z-index: 3;
+  }
+  
+  .nav-items a {
+    text-decoration: none;
+    color: #fff; /* changed */
+  }
+  
+  .nav-items a:hover {
+    text-decoration: underline;
+    font-family: "Pinyon Script", cursive;
+    font-weight: normal;
+    text-transform: lowercase;
+    font-size: xx-large;
+  }
+  .logo a {
+    text-decoration: none;
+    color: #fff; /* changed */
+  }
+  
+  .logo a:hover {
+    text-decoration: underline;
+    font-family: "Pinyon Script", cursive;
+    font-weight: normal;
+    text-transform: lowercase;
+    font-size: xx-large;
+  }
+  

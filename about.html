@@ -6,89 +6,17 @@
   <title>Contact</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
   <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+  <script src="about.js"></script>
 </head>
 <body>
-  <!--need to add the nav bar or a button back, idk which ones cooler-->
-    <script>
-        let circle; 
-        let isDragging = false; 
-        let returnTime = 1.2; 
-        let timer = null;
-        let textOnCircle = "plz dont drag me >.<";
-        
-        function setup() {
-          createCanvas(windowWidth, windowHeight); // Full-screen canvas
-          let radius = 200; 
-          let centerX = width / 2; 
-          let centerY = height / 2; 
-        
-          
-          circle = {
-            x: centerX,
-            y: centerY,
-            radius: radius,
-            color: 'red'
-          };
-        }
-        
-        function draw() {
-          background(255); // 0 = black
-        }
-        
-       
-          fill(0); 
-          textSize(32);
-          textAlign(CENTER, CENTER);
-          text("20230052@MYWHITECLIFFE.COM", width / 2, height / 2);
-        
-          
-          fill(circle.color);
-          noStroke();
-          ellipse(circle.x, circle.y, circle.radius * 3, circle.radius * 3); 
-          fill(255); 
-          textSize(24);
-          textAlign(CENTER, CENTER);
-          text(textOnCircle, circle.x, circle.y); 
-          
-          if (timer) {
-            fill(0); 
-            textSize(24);
-            textAlign(CENTER, TOP);
-            text(
-              "AHHHHHHHHH in: " + (returnTime - (millis() - timer) / 1000).toFixed(1),
-              width / 2,
-              height - 50
-            );
-          }
-      
-          if (timer && millis() - timer >= returnTime * 1000) {
-            resetCircle(); // goes back to og location
-        }
-        
-        function mousePressed() {
-          let d = dist(mouseX, mouseY, circle.x, circle.y);
-          if (d < circle.radius) {
-            isDragging = true; 
-            timer = millis(); 
-          }
-        }
-        
-        function mouseReleased() {
-          isDragging = false; 
-        }
-        
-        function mouseDragged() {
-          if (isDragging) {
-            circle.x = mouseX;
-            circle.y = mouseY;
-          }
-        }
-        
-        function resetCircle() {
-          circle.x = width / 2;
-          circle.y = height / 2;
-          timer = null; 
-        }
-</script>        
+  <div class="container">
+    <div class="nav">
+      <div class="logo"><a href="index.html">Portfolio</a></div>
+      <div class="nav-items">
+        <a href="works.html">Works</a>
+        <a href="other.html">Cool Shit</a>
+        <a href="about.html">About</a>
+      </div>
+    </div>
 </body>
 </html>
