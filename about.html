@@ -10,17 +10,17 @@
 <body>
   <!--need to add the nav bar or a button back, idk which ones cooler-->
     <script>
-        let circle; // Object representing the red circle
-        let isDragging = false; // State to check if the circle is being dragged
-        let returnTime = 1.2; // Time in seconds before the circle returns to the center
-        let timer = null; // Timer to track the countdown
-        let textOnCircle = "plz dont drag me >.<"; // Text to be displayed on the circle
+        let circle; 
+        let isDragging = false; 
+        let returnTime = 1.2; 
+        let timer = null;
+        let textOnCircle = "plz dont drag me >.<";
         
         function setup() {
           createCanvas(windowWidth, windowHeight); // Full-screen canvas
           let radius = 100; // 200*
-          let centerX = width / 2; // Horizontal center
-          let centerY = height / 2; // Vertical center
+          let centerX = width / 2; 
+          let centerY = height / 2; 
         
           // Create the circle with initial position and size
           circle = {
@@ -43,7 +43,7 @@
           // Draw the red circle
           fill(circle.color);
           noStroke();
-          ellipse(circle.x, circle.y, circle.radius * 4, circle.radius * 4); // Draw the circle
+          ellipse(circle.x, circle.y, circle.radius * 3, circle.radius * 3); // Draw the circle
           
           // Draw the fixed text on top of the circle
           fill(255); // White text to contrast with the red circle
