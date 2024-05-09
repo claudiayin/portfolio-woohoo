@@ -105,6 +105,7 @@ body {
   text-decoration: underline;
   font-family: "Pinyon Script", cursive;
   font-weight: normal;
+  text-transform: lowercase;
 }
 .logo a {
   text-decoration: none;
@@ -113,8 +114,9 @@ body {
 
 .logo a:hover {
   text-decoration: underline;
-  font-style: italic;
+  font-family: "Pinyon Script", cursive;
   font-weight: normal;
+  text-transform: lowercase;
 }
 
 .nav-items a:not(:last-child) {
