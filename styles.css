@@ -120,3 +120,9 @@ body {
 .nav-items a:not(:last-child) {
   padding-right: 4em;
 }
+
+.glow:hover {
+  text-shadow:  0 0 10px rgba(255, 255, 255, 0.7), /* White glow */
+                0 0 20px rgba(255, 255, 255, 0.5), /* Further white glow */
+                0 0 30px rgba(255, 255, 255, 0.3);
+}
