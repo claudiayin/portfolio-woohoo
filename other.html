@@ -5,113 +5,52 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>p5.js Video Capture with Facial Recognition</title>
   <!-- Include p5.js from a CDN -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/addons/p5.sound.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js-sound/1.5.0/p5.sound.min.js"></script>  
 </head>
 <body>
-   <!-- Play/Pause Button -->
-  <button id="audio" onclick="toggleAudio()">Play</button>
-
-  <!-- Main p5.js Script -->
-  <script>
-
-    let threshold = 100; // Set a threshold for loudness (tweak as needed)
+<script>
+  let song;         // The audio file
+let fft;          // Frequency analysis object
+let isPlaying = false;
 
 function preload() {
-  song = loadSound("music/peggy.mp3");
-  playing = false;
-  song.onended(() => {
-    playing = false;
-    document.getElementById("audio").innerText = "Play";
-    a = 0;
-  });
-  fr = 60;
+  // Load the audio file
+  song = loadSound(/music/peggy.mp3); // Change 'song.mp3' to your own audio file
 }
 
 function setup() {
-  createCanvas(500, 500);
-  layer = createGraphics(width, height);
-
-  background("black");
-
-  fft = new p5.FFT(0, 256);
-
-  a = 360 / (song.duration() * fr);
-  b = a;
-
-  frameRate(fr);
+  createCanvas(400, 200); // Create a canvas
+  fft = new p5.FFT();     // Create the FFT (Fast Fourier Transform) object
 }
 
 function draw() {
-  background(0);
+  background(0); // Black background
 
-  layer.noFill();
-  layer.colorMode(RGB);
+  // Get the frequency spectrum
+  let spectrum = fft.analyze();
 
-  var spectrumA = fft.analyze();
-  var spectrumB = spectrumA.reverse(); // Reverse the spectrum
-  spectrumB.splice(0, 40); // Remove unwanted low frequencies
-
-  push();
-  translate(250, 250);
-  noFill();
-  stroke("white");
-
-  beginShape();
-
-  // Draw only for loud beats
-  for (let i = 0; i < spectrumB.length; i++) {
-    if (spectrumB[i] > threshold) { // Check if the amplitude is above the threshold
-      var amp = spectrumB[i];
-      var x = map(amp, 0, 256, -2, 2);
-      var y = map(i, 0, spectrumB.length, 30, 215);
-
-      vertex(x, y); // Draw the shape based on louder beats
-    }
+  // Draw the spectrum as bars
+  let barWidth = width / spectrum.length;
+  for (let i = 0; i < spectrum.length; i++) {
+    let barHeight = map(spectrum[i], 0, 255, 0, height);
+    fill(255, 0, 255); // Pink color
+    noStroke();
+    rect(i * barWidth, height - barHeight, barWidth, barHeight); // Draw the bars
   }
-
-  endShape();
-
-  pop();
-
-  push();
-
-  translate(width / 2, height / 2);
-  rotate(radians(a));
-
-  layer.push();
-  layer.translate(width / 2, height / 2);
-  layer.rotate(radians(-a));
-
-  // Draw only for loud beats
-  for (let i = 0; i < spectrumB.length; i++) {
-    if (spectrumB[i] > threshold) { // Check if the amplitude is above the threshold
-      layer.strokeWeight(0.018 * spectrumB[i]);
-      layer.stroke(255, 183, 294 - spectrumB[i], spectrumB[i] / 40);
-      layer.line(0, i, 0, i);
-    }
-  }
-
-  layer.pop();
-
-  image(layer, -width / 2, -height / 2); // Display the final result
-
-  pop();
-
-  if (playing) a += b; // Rotate if playing
 }
 
-function toggleAudio() {
-  if (!playing) {
-    song.play();
-    document.getElementById("audio").innerText = "Pause";
-  } else {
+function mouseClicked() {
+  // Toggle play/pause with a mouse click
+  if (isPlaying) {
     song.pause();
-    document.getElementById("audio").innerText = "Play";
+  } else {
+    song.loop(); // Use loop() to repeat the song
   }
-
-  playing = !playing;
+  isPlaying = !isPlaying;
 }
-    </script>
+
+</script>
+    
     </body>
     </html>
