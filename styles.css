@@ -106,7 +106,7 @@ body {
   font-family: "Pinyon Script", cursive;
   font-weight: normal;
   text-transform: lowercase;
-  font-size: x-large;
+  font-size: xx-large;
 }
 .logo a {
   text-decoration: none;
@@ -118,7 +118,7 @@ body {
   font-family: "Pinyon Script", cursive;
   font-weight: normal;
   text-transform: lowercase;
-  font-size: x-large;
+  font-size: xx-large;
 }
 
 .nav-items a:not(:last-child) {
