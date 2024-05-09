@@ -33,6 +33,7 @@
         
         function draw() {
           background(255); // 0 = black
+        }
         
        
           fill(0); 
@@ -64,7 +65,7 @@
             resetCircle(); // goes back to og location
         }
         
-        function mousePressed() 
+        function mousePressed() {
           let d = dist(mouseX, mouseY, circle.x, circle.y);
           if (d < circle.radius) {
             isDragging = true; 
@@ -83,7 +84,7 @@
           }
         }
         
-        function resetCircle() 
+        function resetCircle() {
           circle.x = width / 2;
           circle.y = height / 2;
           timer = null; 
