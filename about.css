@@ -1,5 +1,10 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
   
-  .logo a {
+  .logo {
     position: absolute;
     text-decoration: none;
     color: #fff; /* changed */
