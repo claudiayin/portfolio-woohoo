@@ -103,7 +103,7 @@ body {
 
 .nav-items a:hover {
   text-decoration: underline;
-  text-transform: italic;
+  font-style: italic;
   font-weight: normal;
 }
 .logo a {
@@ -113,7 +113,7 @@ body {
 
 .logo a:hover {
   text-decoration: underline;
-  text-transform: italic;
+  font-style: italic;
   font-weight: normal;
 }
 
