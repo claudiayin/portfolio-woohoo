@@ -31,7 +31,7 @@ function draw() {
   // Draw the red circle
   fill(circle.color);
   noStroke();
-  ellipse(circle.x, circle.y, circle.radius * 4, circle.radius * 4); // Draw the circle
+  ellipse(circle.x, circle.y, circle.radius * 3, circle.radius * 3); // Draw the circle
   
   // Draw the fixed text on top of the circle
   fill(255); // White text to contrast with the red circle
