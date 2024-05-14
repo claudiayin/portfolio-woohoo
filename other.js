@@ -36,15 +36,15 @@
     }
 
 
-    function toggleMute() {
-      if (bgMusic.paused) {
-        bgMusic.play();
-        muteButton.innerText = "Mute";
-      } else {
-        bgMusic.pause();
-        muteButton.innerText = "Unmute";
+    function togglePlayPause() {
+        if (bgMusic.paused) {
+          bgMusic.play();
+          playPauseButton.innerText = "Pause"; 
+        } else {
+          bgMusic.pause();
+          playPauseButton.innerText = "Play"; 
+        }
       }
-    }
 
     function goBack() {
         window.location.href = "index.html"; 
