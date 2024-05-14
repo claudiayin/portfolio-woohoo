@@ -1,16 +1,15 @@
-let circle; // Object representing the red circle
-let isDragging = false; // State to check if the circle is being dragged
-let returnTime = 1.2; // Time in seconds before the circle returns to the center
-let timer = null; // Timer to track the countdown
-let textOnCircle = "plz dont drag me >.<"; // Text to be displayed on the circle
+let circle; 
+let isDragging = false; 
+let returnTime = 1.2; 
+let timer = null; 
+let textOnCircle = "plz dont drag me >.<"; 
 
 function setup() {
   createCanvas(windowWidth, windowHeight); // Full-screen canvas
-  let radius = 200; // Set circle radius
-  let centerX = width / 2; // Horizontal center
-  let centerY = height / 2; // Vertical center
+  let radius = 200; 
+  let centerX = width / 2; // these two will put circle centered
+  let centerY = height / 2; 
 
-  // Create the circle with initial position and size
   circle = {
     x: centerX,
     y: centerY,
@@ -20,9 +19,8 @@ function setup() {
 }
 
 function draw() {
-  background(255); // White background
+  background(255); 
 
-  // Draw hidden text
   fill(0); // Black text
   textSize(32);
   textAlign(CENTER, CENTER);
@@ -31,17 +29,15 @@ function draw() {
   // Draw the red circle
   fill(circle.color);
   noStroke();
-  ellipse(circle.x, circle.y, circle.radius * 3, circle.radius * 3); // Draw the circle
+  ellipse(circle.x, circle.y, circle.radius * 3, circle.radius * 3); 
   
-  // Draw the fixed text on top of the circle
-  fill(255); // White text to contrast with the red circle
+  fill(255); //this is for the white text
   textSize(24);
   textAlign(CENTER, CENTER);
-  text(textOnCircle, circle.x, circle.y); // Draw the text on the circle
+  text(textOnCircle, circle.x, circle.y);
   
-  // Display the countdown timer if it's active
   if (timer) {
-    fill(0); // Black text
+    fill(0);
     textSize(24);
     textAlign(CENTER, TOP);
     text(
@@ -51,36 +47,34 @@ function draw() {
     );
   }
 
-  // Check if the timer has expired and reset the circle to the center
   if (timer && millis() - timer >= returnTime * 1000) {
-    resetCircle(); // Reset circle to the center
+    resetCircle(); 
   }
 }
 
 function mousePressed() {
-  // Check if mouse is within the circle's boundary
   let d = dist(mouseX, mouseY, circle.x, circle.y);
   if (d < circle.radius) {
-    isDragging = true; // Start dragging if clicked within the circle
-    timer = millis(); // Start the timer
+    isDragging = true; 
+    timer = millis(); 
   }
 }
 
 function mouseReleased() {
-  isDragging = false; // Stop dragging when the mouse is released
+  isDragging = false; 
 }
 
 function mouseDragged() {
   if (isDragging) {
-    // Update circle position to follow the mouse
+
     circle.x = mouseX;
     circle.y = mouseY;
   }
 }
 
 function resetCircle() {
-  // Reset the circle's position to the center
+ 
   circle.x = width / 2;
   circle.y = height / 2;
-  timer = null; // Reset the timer
+  timer = null; 
 }
