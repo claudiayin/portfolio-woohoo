@@ -1,59 +1,46 @@
-let isDrawing = false;
-let bgMusic = document.getElementById("bgMusic");
-let playPauseButton = document.getElementById("playPauseButton");
-let showMessage = true;
+    let isDrawing = false;
+    let bgMusic = document.getElementById("bgMusic");
+    let muteButton = document.getElementById("muteButton");
+    let strokeColor; // Variable to store stroke color
 
-function setup() {
-  createCanvas(windowWidth, windowHeight);
-  background(255);
-  textSize(32);
-  textAlign(CENTER, CENTER);
-  showMessage = true;
-  setTimeout(() => {
-    showMessage = false; // Hide the message after 5 seconds
-  }, 5000);
-}
+    function setup() {
+      createCanvas(windowWidth, windowHeight);
+      background(255);
+      strokeColor = color(0); // Initialize stroke color to black
+    }
 
-function draw() {
-  if (isDrawing) {
-    stroke(0);
-    strokeWeight(10);
-    line(pmouseX, pmouseY, mouseX, mouseY);
-  }
-  if (showMessage) {
-    fill(0);
-    text("Colors will change with each cursor release", width/2, height/2);
-  }
-}
+    function draw() {
+      if (isDrawing) {
+        stroke(strokeColor);
+        strokeWeight(10); // Set the stroke thickness to 10 pixels
+        line(pmouseX, pmouseY, mouseX, mouseY);
+      }
+    }
 
-function mousePressed() {
-  isDrawing = true;
-}
+    function mousePressed() {
+      isDrawing = true;
+    }
 
-function mouseReleased() {
-  isDrawing = false;
-  showMessage = false; 
-}
+    function mouseReleased() {
+      isDrawing = false;
+      // Generate random RGB values for the stroke color
+      strokeColor = color(random(255), random(255), random(255));
+    }
 
-function resetCanvas() {
-  background(255);
-  // Show the message again when the canvas is reset
-  showMessage = true;
-  setTimeout(() => {
-    showMessage = false; // Hide the message after 5 seconds
-  }, 5000);
-}
+    function resetCanvas() {
+      background(255);
+    }
 
-function togglePlayPause() {
-  if (bgMusic.paused) {
-    bgMusic.play();
-    playPauseButton.innerText = "Pause";
-  } else {
-    bgMusic.pause();
-    playPauseButton.innerText = "Play"; 
-  }
-}
+    function toggleMute() {
+      if (bgMusic.paused) {
+        bgMusic.play();
+        muteButton.innerText = "Mute";
+      } else {
+        bgMusic.pause();
+        muteButton.innerText = "Unmute";
+      }
+    }
 
-function goBack() {
-  window.location.href = "index.html"; 
-}
+    function goBack() {
+      window.location.href = "index.html"; // Replace "index.html" with the URL of your home page
+    }
