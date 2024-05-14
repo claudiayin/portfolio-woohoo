@@ -42,3 +42,7 @@ let isDrawing = false;
         muteButton.innerText = "Unmute";
       }
     }
+
+    function goBack() {
+        window.location.href = "index.html"; 
+      }
