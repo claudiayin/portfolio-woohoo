@@ -46,7 +46,7 @@ function draw() {
     text(
       "AHHHHHHHHH in: " + (returnTime - (millis() - timer) / 1000).toFixed(1),
       width / 2,
-      height - 80
+      height - 100
     );
   }
 
