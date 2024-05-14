@@ -14,7 +14,7 @@
     function draw() {
       if (isDrawing) {
         stroke(strokeColor);
-        strokeWeight(20);
+        strokeWeight(13);
         line(pmouseX, pmouseY, mouseX, mouseY);
       }
     }
