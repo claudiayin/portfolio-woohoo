@@ -13,9 +13,8 @@
 
     function draw() {
       if (isDrawing) {
-        stroke(20); //make stroke fat :D
         stroke(strokeColor);
-        strokeWeight(5);
+        strokeWeight(20);
         line(pmouseX, pmouseY, mouseX, mouseY);
       }
     }
