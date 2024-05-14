@@ -5,12 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Paint n Relax!!!</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-    }
-  </style>
+  <script src="other.js"></script>
+  <link rel="stylesheet" href="other.css"/>
 </head>
 <body>
   <button onclick="resetCanvas()">Erase</button>
@@ -19,51 +15,5 @@
     <source src="music/peggy.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
-  <script>
-    let isDrawing = false;
-    let bgMusic = document.getElementById("bgMusic");
-    let muteButton = document.getElementById("muteButton");
-
-
-    function setup() {
-      createCanvas(windowWidth, windowHeight);
-      background(255);
-    }
-
-
-    function draw() {
-      if (isDrawing) {
-        stroke(0);
-        strokeWeight(5);
-        line(pmouseX, pmouseY, mouseX, mouseY);
-      }
-    }
-
-
-    function mousePressed() {
-      isDrawing = true;
-    }
-
-
-    function mouseReleased() {
-      isDrawing = false;
-    }
-
-
-    function resetCanvas() {
-      background(255);
-    }
-
-
-    function toggleMute() {
-      if (bgMusic.paused) {
-        bgMusic.play();
-        muteButton.innerText = "Mute";
-      } else {
-        bgMusic.pause();
-        muteButton.innerText = "Unmute";
-      }
-    }
-  </script>
 </body>
 </html>
