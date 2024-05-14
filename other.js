@@ -1,17 +1,20 @@
-let isDrawing = false;
+    let isDrawing = false;
     let bgMusic = document.getElementById("bgMusic");
     let muteButton = document.getElementById("muteButton");
+    let strokeColor;
 
 
     function setup() {
       createCanvas(windowWidth, windowHeight);
       background(255);
+      strokeColor = color(0);
     }
 
 
     function draw() {
       if (isDrawing) {
-        stroke(0);
+        stroke(20); //make stroke fat :D
+        stroke(strokeColor);
         strokeWeight(5);
         line(pmouseX, pmouseY, mouseX, mouseY);
       }
@@ -25,6 +28,7 @@ let isDrawing = false;
 
     function mouseReleased() {
       isDrawing = false;
+      strokeColor = color(random(255), random(255), random(255));
     }
 
 
