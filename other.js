@@ -50,7 +50,7 @@ function togglePlayPause() {
     playPauseButton.innerText = "Pause";
   } else {
     bgMusic.pause();
-    playPauseButton.innerText = "Play"; /
+    playPauseButton.innerText = "Play"; 
   }
 }
 
