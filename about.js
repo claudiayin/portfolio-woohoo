@@ -78,3 +78,7 @@ function resetCircle() {
   circle.y = height / 2;
   timer = null; 
 }
+
+function goBack() {
+    window.location.href = "index.html"; 
+  }
