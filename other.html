@@ -3,54 +3,67 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>p5.js Video Capture with Facial Recognition</title>
-  <!-- Include p5.js from a CDN -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js-sound/1.5.0/p5.sound.min.js"></script>  
+  <title>Paint n Relax!!!</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
 </head>
 <body>
-<script>
-  let song;         // The audio file
-let fft;          // Frequency analysis object
-let isPlaying = false;
+  <button onclick="resetCanvas()">Erase</button>
+  <button id="muteButton" onclick="toggleMute()">Mute</button>
+  <audio id="bgMusic" loop autoplay>
+    <source src="background_music.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+  <script>
+    let isDrawing = false;
+    let bgMusic = document.getElementById("bgMusic");
+    let muteButton = document.getElementById("muteButton");
 
-function preload() {
-  // Load the audio file
-  song = loadSound(/music/peggy.mp3); // Change 'song.mp3' to your own audio file
-}
 
-function setup() {
-  createCanvas(400, 200); // Create a canvas
-  fft = new p5.FFT();     // Create the FFT (Fast Fourier Transform) object
-}
+    function setup() {
+      createCanvas(windowWidth, windowHeight);
+      background(255);
+    }
 
-function draw() {
-  background(0); // Black background
 
-  // Get the frequency spectrum
-  let spectrum = fft.analyze();
+    function draw() {
+      if (isDrawing) {
+        stroke(0);
+        strokeWeight(5);
+        line(pmouseX, pmouseY, mouseX, mouseY);
+      }
+    }
 
-  // Draw the spectrum as bars
-  let barWidth = width / spectrum.length;
-  for (let i = 0; i < spectrum.length; i++) {
-    let barHeight = map(spectrum[i], 0, 255, 0, height);
-    fill(255, 0, 255); // Pink color
-    noStroke();
-    rect(i * barWidth, height - barHeight, barWidth, barHeight); // Draw the bars
-  }
-}
 
-function mouseClicked() {
-  // Toggle play/pause with a mouse click
-  if (isPlaying) {
-    song.pause();
-  } else {
-    song.loop(); // Use loop() to repeat the song
-  }
-  isPlaying = !isPlaying;
-}
+    function mousePressed() {
+      isDrawing = true;
+    }
 
-</script>
-    
-    </body>
-    </html>
+
+    function mouseReleased() {
+      isDrawing = false;
+    }
+
+
+    function resetCanvas() {
+      background(255);
+    }
+
+
+    function toggleMute() {
+      if (bgMusic.paused) {
+        bgMusic.play();
+        muteButton.innerText = "Mute";
+      } else {
+        bgMusic.pause();
+        muteButton.innerText = "Unmute";
+      }
+    }
+  </script>
+</body>
+</html>
