@@ -5,11 +5,14 @@ let timer = null;
 let textOnCircle = "plz dont drag me >.<"; 
 
 function setup() {
-  createCanvas(windowWidth, windowHeight); // Full-screen canvas
+  createCanvas(windowWidth, windowHeight); 
   let radius = 200; 
   let centerX = width / 2; // these two will put circle centered
   let centerY = height / 2; 
 
+function windowResized() {
+    resizeCanvas(windowWidth, windowHeight); //to make it responsive!!
+  }
   circle = {
     x: centerX,
     y: centerY,
